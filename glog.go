@@ -397,12 +397,11 @@ type flushSyncWriter interface {
 func InitLogs(level int) {
 	logging.alsoToStderr = false
 	logging.toStderr = true
-	logging.verbosity = Level(level)
 
 	// Default stderrThreshold is ERROR.
 	logging.stderrThreshold = errorLog
 
-	// logging.setVState(0, nil, false)
+	logging.setVState(Level(level), nil, false)
 	go logging.flushDaemon()
 }
 
